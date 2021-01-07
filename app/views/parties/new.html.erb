@@ -5,6 +5,20 @@
     <%= f.text_field :name %>
     <%= f.label :date %>
     <%= f.date_field :date %>
+
+    <h3>Select supplies</h3>
+    <%= f.collection_check_boxes :supply_ids, Supply.all, :id, :name %>
+
+    <h3>Create new supplies</h3>
+    <%= f.fields_for :party_supplies do |p| %>
+        <%= p.fields_for :supply do |s| %>
+            <%= s.label :name %>
+            <%= s.text_field :name %><br />
+        <% end %>
+        <%= p.label :quantity %>
+        <%= p.text_field :quantity %><br />
+    <% end %>
+
     <%= f.submit %>
 
 <% end %>

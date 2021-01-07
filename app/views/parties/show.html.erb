@@ -5,5 +5,11 @@
 
 <p><i><%= @party.private? %> Party</i></p>
 
+<h3>Supplies</h3>
+<ul>
+    <% @party.party_supplies.each do |party_supply| %>
+        <li><%= party_supply.supply.name %> x <%= party_supply.quantity %></li>
+    <% end %>
+</ul>
 
 <%= link_to 'All Parties', parties_path %>
